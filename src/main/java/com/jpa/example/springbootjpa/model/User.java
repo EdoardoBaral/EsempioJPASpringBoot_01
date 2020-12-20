@@ -2,10 +2,7 @@ package com.jpa.example.springbootjpa.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -14,9 +11,14 @@ public class User
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(unique = true, nullable = false)
 	private String name;
+	
 	@Column(name = "TEAM_NAME")
 	private String teamName;
+	
+	@Column(nullable = false, columnDefinition = "integer default 0")
 	private Integer salary;
 	
 	@Override
